@@ -2,20 +2,27 @@ package com.valik.model;
 
 import com.valik.controller.external.model.RegisterUserDto;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.awt.image.RGBImageFilter;
-import java.util.HashSet;
-import java.util.Set;
 
+@Entity
+@Table(name = "USERS")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
+    @Column(name = "EMAIL")
     private String email;
+    @Column(name = "TOKEN")
     private String token;
     @NotNull
+    @Column(name = "PASSWORD")
     private String password;
+    @Column(name = "FIRST_NAME")
     private String firstName;
+    @Column(name = "LAST_NAME")
     private String lastName;
 
     public User() {
