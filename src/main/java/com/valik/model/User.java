@@ -4,6 +4,8 @@ import com.valik.controller.external.model.RegisterUserDto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
@@ -24,6 +26,8 @@ public class User {
     private String firstName;
     @Column(name = "LAST_NAME")
     private String lastName;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
@@ -40,6 +44,14 @@ public class User {
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public static User of(RegisterUserDto userDto) {

@@ -25,14 +25,14 @@
 
 
 <div>
-    <h1>Category <c:out value="${category.name}"/></h1>
+    <h1>Category <c:out value="${category.categoryName}"/></h1>
 </div>
 
 <div>
-    <c:forEach var="c" items="${category.product}">
+    <c:forEach var="c" items="${category.productList}">
         <h3>Category name:
             <a href="<c:url value="/product?p_id=${c.id}"/>">
-                <c:out value="${c.name}"/>
+                <c:out value="${c.productName}"/>
             </a>
         </h3>
     </c:forEach>

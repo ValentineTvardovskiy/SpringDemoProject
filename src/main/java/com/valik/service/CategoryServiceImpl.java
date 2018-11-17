@@ -20,6 +20,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category getById(Long id) {
-        return null;
+        return categoryDao.getById(id);
     }
 }
