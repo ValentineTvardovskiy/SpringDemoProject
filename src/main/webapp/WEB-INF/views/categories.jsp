@@ -31,7 +31,7 @@
     <c:forEach var="c" items="${categories}">
         <h3>Category name:
             <a href="<c:url value="/category?c_id=${c.id}"/>">
-                <c:out value="${c.name}"/>
+                <c:out value="${c.categoryName}"/>
             </a>
         </h3>
     </c:forEach>
