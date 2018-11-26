@@ -1,5 +1,8 @@
 package com.valik.controller.external.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.valik.model.User;
+
 import javax.validation.constraints.NotNull;
 
 public class UserDto {
@@ -8,10 +11,14 @@ public class UserDto {
     private String email;
     private String token;
     @NotNull
+    @JsonIgnore
     private String password;
     private String verifiedPassword;
     private String firstName;
     private String lastName;
+
+    public UserDto() {
+    }
 
     private UserDto(String email, String token, String password, String verifiedPassword, String firstName, String lastName) {
         this.email = email;
@@ -68,5 +75,14 @@ public class UserDto {
 
     public void setVerifiedPassword(String verifiedPassword) {
         this.verifiedPassword = verifiedPassword;
+    }
+
+    public static UserDto of(User user) {
+        UserDto dto = new UserDto();
+        dto.setEmail(user.getEmail());
+        dto.setToken(user.getToken());
+        dto.setFirstName(user.getFirstName());
+        dto.setLastName(user.getLastName());
+        return dto;
     }
 }
